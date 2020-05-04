@@ -29,22 +29,33 @@ public class FarmerPortal extends AppCompatActivity {
         epincode = (EditText)findViewById(R.id.pincode);
         addbtn = (Button)findViewById(R.id.freg2);
         showData = (Button)findViewById(R.id.freg);
+        Button butt1 = (Button) findViewById(R.id.freg3);
         addData();
         showAll();
+
+        butt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent int1 = new Intent(FarmerPortal.this, MainActivity.class);
+                startActivity(int1);
+            }
+        });
     }
 
     public void addData(){
         addbtn.setOnClickListener(
                 new OnClickListener(){
                     @Override
-                    public void onClick(View v){
+                    public void onClick(View v) {
                         boolean isInserted = myDB.insertData(ename.getText().toString(),
                                 eaddress.getText().toString(),
                                 epincode.getText().toString());
-                        if(isInserted == true)
-                            Toast.makeText(FarmerPortal.this,"Registered Successfully",Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(FarmerPortal.this,"Registration Unsuccessfull",Toast.LENGTH_LONG).show();
+                        if (isInserted == true) {
+                            Toast.makeText(FarmerPortal.this, "Registered Successfully", Toast.LENGTH_LONG).show();
+                            Intent int2 = new Intent(FarmerPortal.this, MainActivity.class);
+                            startActivity(int2);
+                        } else
+                            Toast.makeText(FarmerPortal.this, "Registration Unsuccessfull", Toast.LENGTH_LONG).show();
                     }
                 }
         );

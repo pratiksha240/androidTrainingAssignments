@@ -74,11 +74,15 @@ public class producer extends AppCompatActivity {
         switch(view.getId())
         {
             case R.id.methi:
+                int index=0;
                 if(checked)
                 {
                     selection.add("Methi");
                     cost1[0]=40;
-                    qnt.add(mqt.getText().toString());
+                    qnt.add(index,mqt.getText().toString());
+//                    String q = mqt.getText().toString();
+//                    int qtt = new Integer(q).intValue();
+//                    qty[0] = qtt;
 //                    cost[0] = cost1[0] * qty[0];
                 }
                 else
@@ -94,7 +98,9 @@ public class producer extends AppCompatActivity {
                 {
                     selection.add("Palak");
                     cost1[1]=30;
-                    qnt.add(pqt.getText().toString());
+//                    qty[1]=Integer.valueOf(pqt.getText().toString());
+
+//                    qnt.add(pqt.getText().toString());
 //                    qty[1]=(Integer)R.id.pQ;
 //                    cost[1] = cost1[1] * qty[1];
                 }
@@ -214,6 +220,7 @@ public class producer extends AppCompatActivity {
         String final_cost = "";
         String final_qty="";
         int total_cost = 0;
+        int fqty = 0;
         for(String selections: selection)
         {
             final_veg_selection = final_veg_selection + selections + "\n";
@@ -228,16 +235,17 @@ public class producer extends AppCompatActivity {
             {
                 final_cost = final_cost + (Integer.toString(cost1[i])) + "\n";
 //                final_qty = final_qty + (Integer.toString(qty[i])) + "\n";
+                fqty = fqty + qty[i] ;
                 total_cost = total_cost + cost1[i];
             }
         }
         final_text.setText(final_veg_selection);
         final_amt.setText((final_cost));
         tot_amt.setText(Integer.toString(total_cost));
-//        quantity.setText(final_qty);
+        quantity.setText(final_qty);
         final_text.setEnabled(true);
         final_amt.setEnabled(true);
         tot_amt.setEnabled(true);
-//        quantity.setEnabled(true);
+        quantity.setEnabled(true);
     }
 }

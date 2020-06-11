@@ -1,13 +1,27 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class Activity4 extends AppCompatActivity {
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class Activity4 extends MainActivity {
+    @Override
+    public void getNextButton() {
+        Intent i = new Intent(Activity4.this, Activity5.class );
+        startActivity(i);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_4);
+    public void getPreviousButton() {
+        Intent i = new Intent(Activity4.this, Activity3.class );
+        startActivity(i);
+    }
+
+    @Override
+    public String getAcitivityName() {
+        return "Activity 4";
     }
 }

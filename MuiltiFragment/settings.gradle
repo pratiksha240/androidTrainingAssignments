@@ -1,0 +1,2 @@
+rootProject.name='Muilti Fragment'
+include ':app'

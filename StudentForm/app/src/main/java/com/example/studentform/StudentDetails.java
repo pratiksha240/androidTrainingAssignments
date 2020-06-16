@@ -1,5 +1,6 @@
 package com.example.studentform;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,14 +25,15 @@ public class StudentDetails extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
+    public View onCreateView( LayoutInflater inflater,
+                              ViewGroup container,
+                             Bundle savedInstanceState )
     {
-        View view = inflater.inflate(R.layout.fragment_student_details, container, false);
-        sname = view.findViewById(R.id.textView8);
-        smarks = view.findViewById(R.id.textView10);
-        sgender = view.findViewById(R.id.textView12);
-        sdegree = view.findViewById(R.id.textView14);
+        View view = inflater.inflate( R.layout.fragment_student_details, container, false );
+        sname = view.findViewById( R.id.textView8 );
+        smarks = view.findViewById( R.id.textView10 );
+        sgender = view.findViewById( R.id.textView12 );
+        sdegree = view.findViewById( R.id.textView14 );
 
         Bundle bundle = this.getArguments();
         String name = bundle.getString("name");
@@ -39,10 +41,10 @@ public class StudentDetails extends Fragment
         String gender = bundle.getString("gender");
         String degree = bundle.getString("degree");
 
-        sname.setText(name);
-        smarks.setText(marks);
-        sgender.setText(gender);
-        sdegree.setText(degree);
+        sname.setText( name );
+        smarks.setText( marks );
+        sgender.setText( gender );
+        sdegree.setText( degree );
 
         return view;
     }

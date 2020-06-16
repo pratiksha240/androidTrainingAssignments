@@ -1,9 +1,11 @@
 package com.example.studentform;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,37 +31,40 @@ public class FillForm extends Fragment {
     String gender, degree;
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView( final LayoutInflater inflater,
                              ViewGroup container,
-                             Bundle savedInstanceState)
+                             Bundle savedInstanceState )
     {
-        final View view = inflater.inflate(R.layout.fragment_fill_form, container, false);
-        Spinner mySpinner = (Spinner) view.findViewById(R.id.spinner);
+        final View view = inflater.inflate( R.layout.fragment_fill_form, container, false );
+        Spinner mySpinner = (Spinner) view.findViewById( R.id.spinner );
         btn = view.findViewById(R.id.button);
         sname = view.findViewById(R.id.editText);
         marks = view.findViewById(R.id.editText2);
 
-        btn.setOnClickListener(new View.OnClickListener()
+        btn.setOnClickListener( new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
+            public void onClick( View v )
             {
+
                 Bundle bundle = new Bundle();
                 bundle.putString("name", sname.getText().toString() );
                 bundle.putString("marks", marks.getText().toString() );
                 bundle.putString("gender", gender );
                 bundle.putString("degree", degree );
-                StudentDetails fragment2 = new StudentDetails();
-                fragment2.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.my_layout, fragment2).commit();
+
+                Intent intent = new Intent();
+                intent.setAction("CUSTOM_SHOW_DETAILS");
+                intent.putExtras(bundle);
+                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
             }
         });
 
         radioGroup = (RadioGroup) view.findViewById( R.id.radioGroup );
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        radioGroup.setOnCheckedChangeListener( new RadioGroup.OnCheckedChangeListener()
         {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId)
+            public void onCheckedChanged( RadioGroup group, int checkedId )
             {
                 radioButton = view.findViewById(checkedId);
                 gender = radioButton.getText().toString();
@@ -81,18 +86,10 @@ public class FillForm extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected( AdapterView<?> parent ) {
 
             }
         });
         return view;
     }
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-
-    }
-
 }

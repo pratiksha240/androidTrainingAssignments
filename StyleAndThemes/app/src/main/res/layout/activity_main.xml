@@ -8,24 +8,16 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="?attr/width"
-        android:layout_height="150dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
-        android:layout_marginTop="44dp"
         android:src="@drawable/image"
+        style="?attr/imageviewStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="238dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="68dp"
         android:text="Hello World..!!"
-        android:textSize="24sp"
-        android:textColor="?attr/textcolor"
+        style="?attr/textviewStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,13 +25,8 @@
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_width="202dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="48dp"
         android:text="Dark Mode"
-        android:textColor="?attr/textcolor"
+        style="?attr/switchStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

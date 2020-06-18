@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="imageparam">
-        <attr name="height" format="dimension"/>
-        <attr name="width" format="dimension"/>
-        <attr name="textcolor" format="color"/>
-    </declare-styleable>
+    <attr name="switchStyle" format="reference"/>
+    <attr name="textviewStyle" format="reference" />
+    <attr name="imageviewStyle" format="reference" />
 </resources>

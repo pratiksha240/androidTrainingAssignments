@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="imageWidthForLightMode" >300dp</dimen>
+    <dimen name="imageHeightForLightMode" >150dp</dimen>
+    <dimen name="imageHeightForDarMode" >300dp</dimen>
+</resources>

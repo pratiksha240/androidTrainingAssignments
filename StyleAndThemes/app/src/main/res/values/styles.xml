@@ -7,17 +7,18 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:gravity">center_horizontal</item>
-        <item name="textcolor">#ff4040</item>
-        <item name="height">150dp</item>
-        <item name="width">300dp</item>
+        <item name="switchStyle">@style/SwitchLightMode</item>
+        <item name="imageviewStyle">@style/ImageviewLightMode</item>
+        <item name="textviewStyle">@style/TextviewLightMode</item>
     </style>
 
     <style name="MyThem"  parent="AppTheme">
         <item name="android:gravity">center_horizontal</item>
-        <item name="textcolor">#FFFEFB</item>
         <item name="android:background">#040001</item>
         <item name="height">300dp</item>
-        <item name="width">300dp</item>
+        <item name="switchStyle">@style/SwitchDarkMode</item>
+        <item name="imageviewStyle">@style/ImageviewDarkMode</item>
+        <item name="textviewStyle">@style/TextviewDardMode</item>
     </style>
 
 </resources>

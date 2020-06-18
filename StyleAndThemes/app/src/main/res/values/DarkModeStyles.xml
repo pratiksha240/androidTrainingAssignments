@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SwitchDarkMode" parent="SwitchLightMode">
+        <item name="android:textColor">@color/whitecolor</item>
+    </style>
+
+    <style name="TextviewDardMode" parent="ImageviewLightMode">
+        <item name="android:textColor">@color/whitecolor</item>
+    </style>
+
+    <style name="ImageviewDarkMode" parent="ImageviewLightMode">
+        <item name="android:layout_height">@dimen/imageHeightForDarMode</item>
+    </style>
+</resources>

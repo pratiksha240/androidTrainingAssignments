@@ -24,8 +24,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
-    {
+        {
         super.onCreate(savedInstanceState);
+        loadData();
         onActivitySetTheme(this);
         setContentView(R.layout.activity_main);
 
@@ -38,11 +39,10 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 saveData();
-                loadData();
                 recreate();
             }
         });
-
+//        loadData();
         switch1.setChecked(switchstatus);
 
     }

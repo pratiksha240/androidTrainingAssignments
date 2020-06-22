@@ -18,23 +18,33 @@ public class MyRecycleviewAdapter extends RecyclerView.Adapter<MyRecycleviewAdap
 
     @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.recycler_item_layout, parent, false);
         return new RecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewHolder holder, final int position)
+    {
         String text = data[position];
+        holder.itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                System.out.println("Selected item = " + data[position]);
+            }
+        });
         holder.textView.setText(text);
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return data.length;
     }
-
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder
     {

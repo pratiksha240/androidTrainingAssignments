@@ -15,20 +15,17 @@ import androidx.recyclerview.widget.RecyclerView;
  */
 public class recylerviewFragment extends Fragment {
 
-    public recylerviewFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView( LayoutInflater inflater,
+                              ViewGroup container,
+                             Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_recylerview, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycleview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        String[] country = {"India","USA","Japan","Brazil","Russia","Germany","France","China","Mexico"};
-//        recyclerView.setAdapter(new MyRecycleviewAdapter(country));
+        String[] country = {"India","USA","Japan","Brazil","Russia","Germany","France","China","Mexico","Nepal","Pakistan","Canada"};
+        MyRecycleviewAdapter myRecycleviewAdapter = new MyRecycleviewAdapter(country);
+        recyclerView.setAdapter(myRecycleviewAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
     }
 }

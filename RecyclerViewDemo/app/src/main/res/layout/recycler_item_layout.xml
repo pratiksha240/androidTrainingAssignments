@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp">
+    android:padding="3dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        style="@style/CardviewStyle"
+        app:contentPaddingLeft="20dp"
         app:cardCornerRadius="5dp">
 
         <TextView
@@ -16,6 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="24dp"/>
+            style="@style/textviewStyle"/>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

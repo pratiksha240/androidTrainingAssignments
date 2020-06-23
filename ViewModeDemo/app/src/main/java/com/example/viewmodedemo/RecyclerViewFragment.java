@@ -26,14 +26,21 @@ public class RecyclerViewFragment extends Fragment
     {
         View view = inflater.inflate(R.layout.recycler_view_fragment, container, false);
         String[] country = {"India","USA","Japan","Brazil","Russia","Germany","France","China","Mexico","Nepal","Pakistan","Canada"};
-
-        mViewModel = new ViewModelProvider(getActivity()).get(RecyclerViewViewModel.class);
-        mViewModel.setValues(country);
-        String[] countries = mViewModel.getValues();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycleview);
-        MyAdapter myRecycleviewAdapter = new MyAdapter(countries);
-        recyclerView.setAdapter(myRecycleviewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if( getActivity() != null )
+        {
+            mViewModel = new ViewModelProvider(getActivity()).get(RecyclerViewViewModel.class);
+            if( mViewModel != null )
+            {
+                mViewModel.setValues(country);
+                String[] countries = mViewModel.getValues();
+                RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycleview);
+                if ( recyclerView != null && countries != null ) {
+                    MyAdapter myRecycleviewAdapter = new MyAdapter(countries);
+                    recyclerView.setAdapter(myRecycleviewAdapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                }
+            }
+        }
         return view;
     }
 }

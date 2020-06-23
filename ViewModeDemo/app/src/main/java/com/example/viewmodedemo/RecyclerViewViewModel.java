@@ -7,7 +7,13 @@ public class RecyclerViewViewModel extends ViewModel
     String[] country;
     public void setValues(String[] country)
     {
-        this.country = country;
+        if( country != null )
+        {
+            this.country = country;
+        }
+        else{
+            System.out.println("\nNull object..!!");
+        }
     }
     public String[] getValues()
     {

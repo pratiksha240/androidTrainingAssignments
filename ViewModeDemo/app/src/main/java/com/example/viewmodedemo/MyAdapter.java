@@ -13,7 +13,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.RecyclerViewHolder
     private String[] data;
     public MyAdapter(String[] data)
     {
-        this.data = data;
+        if( data != null )
+            this.data = data;
+        else
+            System.out.println("Null object...!!");
     }
 
     @NonNull

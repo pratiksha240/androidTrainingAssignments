@@ -32,39 +32,44 @@ public class LiveDataFragment extends Fragment
         View view = inflater.inflate(R.layout.live_data_fragment, container, false);
         textView = view.findViewById(R.id.textView);
         editText = view.findViewById(R.id.editText);
-        model = new ViewModelProvider(getActivity()).get(LiveDataViewModel.class);
 
-        final LiveData<String> data = model.getEnteredText();
-        data.observe(getViewLifecycleOwner(), new Observer<String>()
+        if( getActivity() != null )
         {
-            @Override
-            public void onChanged(String s)
+            model = new ViewModelProvider(getActivity()).get(LiveDataViewModel.class);
+            if( model != null )
             {
-                textView.setText(s);
+                final LiveData<String> data = model.getEnteredText();
+                data.observe(getViewLifecycleOwner(), new Observer<String>()
+                {
+                    @Override
+                    public void onChanged(String s)
+                    {
+                        textView.setText(s);
+                    }
+                });
+                editText.addTextChangedListener(new TextWatcher()
+                {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after)
+                    {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count)
+                    {
+                        String text = editText.getText().toString();
+                        model.setEntededText(text);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s)
+                    {
+
+                    }
+                });
             }
-        });
-        editText.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-                String text = editText.getText().toString();
-                model.setEntededText(text);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s)
-            {
-
-            }
-        });
-
+        }
         return view;
     }
 }

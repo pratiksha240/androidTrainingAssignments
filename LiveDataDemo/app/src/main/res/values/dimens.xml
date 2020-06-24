@@ -6,5 +6,6 @@
     <dimen name="dimen_195">195dp</dimen>
     <dimen name="dimen_238">238dp</dimen>
     <dimen name="dimen_84">84dp</dimen>
+    <dimen name="dimen_40">40dp</dimen>
     <dimen name="size">24sp</dimen>
 </resources>

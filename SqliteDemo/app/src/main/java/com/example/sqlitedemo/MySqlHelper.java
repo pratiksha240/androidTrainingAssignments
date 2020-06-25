@@ -1,4 +1,4 @@
-package com.example.studentform;
+package com.example.sqlitedemo;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,8 +8,6 @@ import androidx.annotation.Nullable;
 
 public class MySqlHelper extends SQLiteOpenHelper
 {
-
-//    private static final String EmployeeInfo = "EmployeeInfo";
 
     public MySqlHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version)
     {
@@ -29,3 +27,4 @@ public class MySqlHelper extends SQLiteOpenHelper
         onCreate(db);
     }
 }
+

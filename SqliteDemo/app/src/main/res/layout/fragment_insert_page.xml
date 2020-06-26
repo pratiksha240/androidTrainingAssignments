@@ -25,9 +25,8 @@
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            style="@style/editviewStyle" />
+            style="@style/editviewStyle"
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/textView5"
@@ -58,6 +57,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             style="@style/editviewStyle" />
+
     </LinearLayout>
 
     <Button

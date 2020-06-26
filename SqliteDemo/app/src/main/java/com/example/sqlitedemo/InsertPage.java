@@ -1,12 +1,14 @@
 package com.example.sqlitedemo;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,10 +48,10 @@ public class InsertPage extends Fragment
                 values.put( "edesignation", desig.getText().toString() );
                 long row = db.insert("Employee", null, values );
                 System.out.println("row value = " + row);
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.frag_layout, new FrontPageFragment(), "First Page");
-                ft.commit();
+
+                Intent intent = new Intent();
+                intent.setAction("FIRST_PAGE");
+                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
             }
         });
         return view;

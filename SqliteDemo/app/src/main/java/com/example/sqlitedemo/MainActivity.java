@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity
                 case "FIRST_PAGE" : FrontPageFragment frontPage = new FrontPageFragment();
                                     firstPage(frontPage, fm);
                                     break;
+                case "UPDATE_PAGE" : UpdatePage updatePage = new UpdatePage();
+                                    updatePage(updatePage, fm);
+                                    break;
             }
         }
     };
@@ -61,13 +64,20 @@ public class MainActivity extends AppCompatActivity
     {
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.frag_layout, frag, "First Page").commit();
-        System.out.println("First page replaced");
+        System.out.println("First page..!!");
     }
 
     private void insertPage(InsertPage frag, FragmentManager fragmentManager)
     {
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.frag_layout, frag, "Insert Page").commit();
-        System.out.println("Insert page replaced");
+        System.out.println("Insert page..!!");
+    }
+
+    private void updatePage(UpdatePage updatePage, FragmentManager fragmentManager)
+    {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.frag_layout, updatePage, "Update Page").commit();
+        System.out.println("Update page..!!");
     }
 }

@@ -1,6 +1,7 @@
 package com.example.sqlitedemo;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -25,6 +26,16 @@ public class MySqlHelper extends SQLiteOpenHelper
     {
         db.execSQL("drop table if exists Employee");
         onCreate(db);
+    }
+
+    public Cursor getAllItems()
+    {
+        String query = "SELECT * FROM  Employee";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+        if( db != null)
+            cursor = db.rawQuery( query, null );
+        return cursor;
     }
 }
 

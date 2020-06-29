@@ -52,4 +52,36 @@
         <item name="android:paddingRight">10dp</item>
     </style>
 
+    <style name="itemNumber">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/dimen36sp</item>
+        <item name="android:paddingLeft">@dimen/dimen20</item>
+        <item name="android:paddingRight">@dimen/dimen20</item>
+        <item name="android:paddingTop">@dimen/dimen20</item>
+        <item name="android:paddingBottom">@dimen/dimen20</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/dimen10</item>
+    </style>
+
+    <style name="itemName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen22sp</item>
+        <item name="android:layout_marginLeft">@dimen/dimen10</item>
+        <item name="android:layout_marginRight">@dimen/dimen10</item>
+        <item name="android:layout_marginTop">@dimen/dimen10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen5</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="itemDesig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/dimen20sp</item>
+        <item name="android:layout_marginLeft">@dimen/dimen10</item>
+        <item name="android:layout_marginRight">@dimen/dimen10</item>
+        <item name="android:layout_marginTop">@dimen/dimen10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen5</item>
+    </style>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.sqlitedemo;
+package com.example.roomdatabasedemo;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -10,10 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>
 {
     private Context context;
-    private Cursor cursor;
+    private List<EmployeeEntity> employees;
     private onItemClickListener mListener;
 
     public interface onItemClickListener
@@ -26,11 +28,12 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         mListener = listener;
     }
 
-    public EmployeeAdapter(Context context, Cursor cursor)
+    public EmployeeAdapter(Context context, List<EmployeeEntity> employees)
     {
         this.context = context;
-        this.cursor = cursor;
+        this.employees = employees;
     }
+
     @NonNull
     @Override
     public EmployeeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -43,23 +46,20 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
     @Override
     public void onBindViewHolder(@NonNull EmployeeViewHolder holder, int position)
     {
-        if(!cursor.moveToPosition(position))
-            return;
-        int eId = cursor.getInt(cursor.getColumnIndex("eid"));
-        String eName = cursor.getString(cursor.getColumnIndex("ename"));
-        String eDesig = cursor.getString(cursor.getColumnIndex("edesignation"));
+        EmployeeEntity employee = employees.get(position);
+        int mId = employee.getEid();
+        String mName = employee.getEname();
+        String mDesignation = employee.getEdesig();
 
-        holder.empid.setText(String.valueOf(eId));
-        holder.empName.setText(eName);
-        holder.empDesignation.setText(eDesig);
-
-
+        holder.empid.setText(String.valueOf(mId));
+        holder.empName.setText(mName);
+        holder.empDesignation.setText(mDesignation);
     }
 
     @Override
     public int getItemCount()
     {
-        return cursor.getCount();
+        return employees.size();
     }
 
     public class EmployeeViewHolder extends RecyclerView.ViewHolder

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.room.Room;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -60,12 +61,15 @@ public class MainActivity extends AppCompatActivity
     };
 
     LocalBroadcastManager localBroadcastManager;
+    public static MyDatabase myDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        myDatabase = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "EmployeeDB").allowMainThreadQueries().build();
         localBroadcastManager = LocalBroadcastManager.getInstance(this);
 
         IntentFilter filter = new IntentFilter();
@@ -87,19 +91,35 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
-    private void updatePage(UpdatePage updatePage, FragmentManager fm, Intent intent)
+    private void updatePage(UpdatePage updatePage, FragmentManager fragmentManager, Intent intent)
     {
+        Bundle bundle = intent.getExtras();
+        updatePage.setArguments(bundle);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.frag_layout, updatePage, "Update Page").commit();
+        System.out.println("Update page..!!");
     }
 
-    private void deletePage(DeletePage deletePage, FragmentManager fm, Intent intent)
+    private void deletePage(DeletePage deletePage, FragmentManager fragmentManager, Intent intent)
     {
+        Bundle bundle = intent.getExtras();
+        deletePage.setArguments(bundle);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.frag_layout, deletePage, "Delete Page").commit();
+        System.out.println("Delete page..!!");
     }
 
-    private void firstPage(FirstPage firstPage, FragmentManager fm)
+    private void firstPage(FirstPage frag, FragmentManager fragmentManager)
     {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.frag_layout, frag, "First Page").commit();
+        System.out.println("First page..!!");
     }
 
-    private void insertPage(InsertPage insertPage, FragmentManager fm)
+    private void insertPage(InsertPage frag, FragmentManager fragmentManager)
     {
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.frag_layout, frag, "Insert Page").commit();
+        System.out.println("Insert page..!!");
     }
 }

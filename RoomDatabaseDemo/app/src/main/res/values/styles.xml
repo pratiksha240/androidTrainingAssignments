@@ -1,0 +1,87 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="textviewStyle">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="editviewStyle">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="updateButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="textviewOnUpdatePage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+    </style>
+
+    <style name="itemNumber">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/dimen36sp</item>
+        <item name="android:paddingLeft">@dimen/dimen20</item>
+        <item name="android:paddingRight">@dimen/dimen20</item>
+        <item name="android:paddingTop">@dimen/dimen20</item>
+        <item name="android:paddingBottom">@dimen/dimen20</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">@dimen/dimen10</item>
+    </style>
+
+    <style name="itemName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/dimen22sp</item>
+        <item name="android:layout_marginLeft">@dimen/dimen10</item>
+        <item name="android:layout_marginRight">@dimen/dimen10</item>
+        <item name="android:layout_marginTop">@dimen/dimen10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen5</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="itemDesig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/dimen20sp</item>
+        <item name="android:layout_marginLeft">@dimen/dimen10</item>
+        <item name="android:layout_marginRight">@dimen/dimen10</item>
+        <item name="android:layout_marginTop">@dimen/dimen10</item>
+        <item name="android:layout_marginBottom">@dimen/dimen5</item>
+    </style>
+</resources>

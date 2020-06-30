@@ -14,6 +14,18 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
 {
     private Context context;
     private Cursor cursor;
+    private onItemClickListener mListener;
+
+    public interface onItemClickListener
+    {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener)
+    {
+        mListener = listener;
+    }
+
     public EmployeeAdapter(Context context, Cursor cursor)
     {
         this.context = context;
@@ -25,7 +37,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
     {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_layout, parent, false);
-        return new EmployeeViewHolder(view);
+        return new EmployeeViewHolder( view, mListener );
     }
 
     @Override
@@ -40,6 +52,8 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         holder.empid.setText(String.valueOf(eId));
         holder.empName.setText(eName);
         holder.empDesignation.setText(eDesig);
+
+
     }
 
     @Override
@@ -53,11 +67,25 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         public TextView empid;
         public TextView empName;
         public TextView empDesignation;
-        public EmployeeViewHolder(@NonNull View itemView) {
+        public EmployeeViewHolder(@NonNull View itemView, final onItemClickListener listener) {
             super(itemView);
             empid = itemView.findViewById(R.id.textView);
             empName = itemView.findViewById(R.id.textView2);
             empDesignation = itemView.findViewById(R.id.textView3);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if( listener != null )
+                    {
+                        int position = getAdapterPosition();
+                        if( position != RecyclerView.NO_POSITION)
+                        {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 

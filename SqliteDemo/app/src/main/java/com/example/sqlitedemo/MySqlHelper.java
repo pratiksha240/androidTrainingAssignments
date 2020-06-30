@@ -1,5 +1,6 @@
 package com.example.sqlitedemo;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,6 +37,23 @@ public class MySqlHelper extends SQLiteOpenHelper
         if( db != null)
             cursor = db.rawQuery( query, null );
         return cursor;
+    }
+
+    public Integer deleteData(String id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("Employee", "eid = ?", new String[] {id});
+    }
+
+    public boolean updateData(String id, String name, String desig )
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put( "eid", id );
+        values.put( "ename", name );
+        values.put( "edesignation", desig );
+        db.update("EMployee", values, "eid = ?", new String[] { id });
+        return true;
     }
 }
 

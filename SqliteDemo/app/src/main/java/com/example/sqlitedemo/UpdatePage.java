@@ -4,48 +4,68 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class UpdatePage extends Fragment
 {
+    MySqlHelper mySqlHelper;
+    TextView mEmployeeId;
+    EditText mEmployeeName, mDesignation;
+    String mId, mName, mDesig;
+    Button update;
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState)
     {
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_update_page, container, false);
-        Button update = view.findViewById(R.id.button3);
-        Button delete = view.findViewById(R.id.button4);
+
+        mySqlHelper = new MySqlHelper (getContext(), null, null, 1);
+        mEmployeeId = view.findViewById(R.id.textView8);
+        mEmployeeName = view.findViewById(R.id.editText4);
+        mDesignation = view.findViewById(R.id.editText5);
+        update = view.findViewById(R.id.button5);
+
+        Bundle bundle = this.getArguments();
+        mId = bundle.getString("eid");
+        mName = bundle.getString("ename");
+        mDesig = bundle.getString("edesig");
+
+        mEmployeeId.setText( mId );
+        mEmployeeName.setText( mName );
+        mDesignation.setText( mDesig );
+
+        updateData();
+        return view;
+    }
+
+    public void updateData()
+    {
         update.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                changePage();
+                boolean isUpdated = mySqlHelper.updateData( mEmployeeId.getText().toString(),
+                        mEmployeeName.getText().toString(),
+                        mDesignation.getText().toString());
+                if( isUpdated )
+                    Toast.makeText(getContext(), "Data Updated", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(getContext(), "Data not updated", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent();
+                intent.setAction("FIRST_PAGE");
+                LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
             }
         });
-        delete.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                changePage();
-            }
-        });
-        return view;
-    }
-
-    private void changePage()
-    {
-        Intent intent = new Intent();
-        intent.setAction("FIRST_DATA");
-        LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
     }
 }

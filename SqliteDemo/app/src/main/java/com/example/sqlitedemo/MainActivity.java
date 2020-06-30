@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -30,9 +29,17 @@ public class MainActivity extends AppCompatActivity
                 case "FIRST_PAGE" : FrontPageFragment frontPage = new FrontPageFragment();
                                     firstPage(frontPage, fm);
                                     break;
-                case "UPDATE_PAGE" : UpdatePage updatePage = new UpdatePage();
-                                    updatePage(updatePage, fm);
+                case "DELETE_PAGE" : DeletePage deletePage = new DeletePage();
+                                    System.out.println("before call ..!!");
+                                    deletePage(deletePage, fm, intent);
+                                    System.out.println("after call ..!!");
                                     break;
+                case "UPDATE_PAGE" : UpdatePage updatePage = new UpdatePage();
+                                    System.out.println("Update page call...!!");
+                                    updatePage(updatePage, fm, intent);
+                                    break;
+                default: System.out.println("Invalid Flag..!!");
+                         break;
             }
         }
     };
@@ -49,17 +56,21 @@ public class MainActivity extends AppCompatActivity
         IntentFilter filter = new IntentFilter();
         filter.addAction("FIRST_PAGE");
         filter.addAction("INSERT_DATA");
-        filter.addAction("UPDATE_DATA");
-        filter.addAction("DELETE_DATA");
+        filter.addAction("UPDATE_PAGE");
+        filter.addAction("DELETE_PAGE");
 
         localBroadcastManager.registerReceiver(br, filter);
 
+        frontPage();
+    }
+
+    private void frontPage()
+    {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.frag_layout, new FrontPageFragment(), "FirstPage");
         ft.commit();
     }
-
     private void firstPage(FrontPageFragment frag, FragmentManager fragmentManager)
     {
         FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -74,8 +85,19 @@ public class MainActivity extends AppCompatActivity
         System.out.println("Insert page..!!");
     }
 
-    private void updatePage(UpdatePage updatePage, FragmentManager fragmentManager)
+    private void deletePage(DeletePage deletePage, FragmentManager fragmentManager, Intent intent)
     {
+        Bundle bundle = intent.getExtras();
+        deletePage.setArguments(bundle);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.frag_layout, deletePage, "Delete Page").commit();
+        System.out.println("Delete page..!!");
+    }
+
+    private void updatePage(UpdatePage updatePage, FragmentManager fragmentManager, Intent intent)
+    {
+        Bundle bundle = intent.getExtras();
+        updatePage.setArguments(bundle);
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.frag_layout, updatePage, "Update Page").commit();
         System.out.println("Update page..!!");

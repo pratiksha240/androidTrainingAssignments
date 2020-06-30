@@ -19,18 +19,25 @@ import android.widget.TextView;
 
 public class InsertPage extends Fragment
 {
+    Button insert;
+    EditText eid, name, desig;
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState)
     {
-        // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_insert_page, container, false);
-        final Button btn = view.findViewById(R.id.button2);
-        final EditText eid = view.findViewById(R.id.editText);
-        final EditText name = view.findViewById(R.id.editText2);
-        final EditText desig = view.findViewById(R.id.editText3);
-        btn.setOnClickListener(new View.OnClickListener()
+        insert = view.findViewById(R.id.button2);
+        eid = view.findViewById(R.id.editText);
+        name = view.findViewById(R.id.editText2);
+        desig = view.findViewById(R.id.editText3);
+        insertData();
+        return view;
+    }
+
+    public void insertData()
+    {
+        insert.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -50,6 +57,5 @@ public class InsertPage extends Fragment
                 LocalBroadcastManager.getInstance(getContext()).sendBroadcast(intent);
             }
         });
-        return view;
     }
 }

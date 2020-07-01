@@ -80,7 +80,10 @@ public class MainActivity extends AppCompatActivity
 
         localBroadcastManager.registerReceiver(br, filter);
 
-        frontPage();
+        if( savedInstanceState == null)
+        {
+            frontPage();
+        }
     }
 
     private void frontPage()

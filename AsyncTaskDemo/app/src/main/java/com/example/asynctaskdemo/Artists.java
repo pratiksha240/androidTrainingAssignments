@@ -27,11 +27,11 @@ public class Artists extends Fragment
 
         ArrayList<ArtistsData> artistsData = new ArrayList<>();
         Bundle bundle = this.getArguments();
-        ArrayList<ArrayList<Items>> itemsList = new ArrayList<>();
+        ArrayList<Items> itemsList = new ArrayList<>();
         artistsData = (ArrayList<ArtistsData>) bundle.getSerializable("ArtistList");
+
         for( int i = 0; i < artistsData.size(); i++ )
         {
-            ArrayList<Items> items = new ArrayList<>();
             Items item = new Items();
             ArtistsData artist = new ArtistsData();
             artist = artistsData.get(i);
@@ -39,8 +39,7 @@ public class Artists extends Fragment
             item.setmName(artist.getmName());
             item.setmImage(artist.getmImage());
             System.out.println("artist Item = " + item.getmId() + "\t" + item.getmName() );
-            items.add(item);
-            itemsList.add(items);
+            itemsList.add(item);
         }
 
         myAdapter = new MyAdapter( getContext(), itemsList );

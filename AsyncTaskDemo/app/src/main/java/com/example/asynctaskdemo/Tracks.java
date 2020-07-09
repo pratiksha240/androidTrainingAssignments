@@ -26,8 +26,9 @@ public class Tracks extends Fragment
 
         ArrayList<TracksData> tracksData = new ArrayList<>();
         Bundle bundle = this.getArguments();
-        ArrayList<ArrayList<Items>> itemsList = new ArrayList<>();
+        ArrayList<Items> itemsList = new ArrayList<>();
         tracksData = (ArrayList<TracksData>) bundle.getSerializable("TrackList");
+
         for( int i = 0; i < tracksData.size(); i++ )
         {
             ArrayList<Items> items = new ArrayList<>();
@@ -38,8 +39,7 @@ public class Tracks extends Fragment
             item.setmName(track.getmName());
             item.setmImage(track.getmImage());
             System.out.println("track Item = " + item.getmId() + "\t" + item.getmName() );
-            items.add(item);
-            itemsList.add(items);
+            itemsList.add(item);
         }
 
         myAdapter = new MyAdapter( getContext(), itemsList );

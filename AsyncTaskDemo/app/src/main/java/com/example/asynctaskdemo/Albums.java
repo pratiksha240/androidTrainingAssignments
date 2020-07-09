@@ -26,11 +26,11 @@ public class Albums extends Fragment
 
         ArrayList<AlbumsData> albumsData = new ArrayList<>();
         Bundle bundle = this.getArguments();
-        ArrayList<ArrayList<Items>> itemsList = new ArrayList<>();
+        ArrayList<Items> itemsList = new ArrayList<>();
         albumsData = (ArrayList<AlbumsData>) bundle.getSerializable("AlbumList");
+
         for( int i = 0; i < albumsData.size(); i++ )
         {
-            ArrayList<Items> items = new ArrayList<>();
             Items item = new Items();
             AlbumsData album = new AlbumsData();
             album = albumsData.get(i);
@@ -38,13 +38,11 @@ public class Albums extends Fragment
             item.setmName(album.getmName());
             item.setmImage(album.getmImage());
             System.out.println("album Item = " + item.getmId() + "\t" + item.getmName() );
-            items.add(item);
-            itemsList.add(items);
+            itemsList.add(item);
         }
 
         myAdapter = new MyAdapter( getContext(), itemsList );
         recyclerView.setAdapter(myAdapter);
-
         return view;
     }
 }

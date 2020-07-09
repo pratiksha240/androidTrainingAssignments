@@ -1,7 +1,6 @@
 package com.example.asynctaskdemo;
 
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,19 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.module.AppGlideModule;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
+public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     Context context;
-    ArrayList<ArrayList<Items>> dataList;
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
+    ArrayList<Items> dataList;
     private onItemClickListener mListener;
 
-    public MyAdapter(Context context, ArrayList<ArrayList<Items>> dataList)
+    public MyAdapter(Context context, ArrayList<Items> dataList)
     {
         this.context = context;
         this.dataList = dataList;
@@ -41,46 +40,53 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
     }
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view;
-        if( dataList.size() == 3 )
+        if (viewType == TYPE_ITEM)
         {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.items_layout, parent, false);
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+            return new ItemViewHolder( itemView, mListener );
+        }
+        else if (viewType == TYPE_HEADER)
+        {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.header_layout, parent, false);
+            return new HeaderViewHolder( itemView, mListener );
         }
         else
         {
-            LayoutInflater inflater = LayoutInflater.from(context);
-            view = inflater.inflate(R.layout.item_layout, parent, false);
+            return null;
         }
-        return new MyViewHolder( view, mListener );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    public int getItemViewType( int position )
     {
-        ArrayList<Items> item = dataList.get(position);
-        Log.d("DEBUG","Datalist size = " + dataList.size() );
-        if( dataList.size() == 3 )
+        Items item = dataList.get(position);
+        if ( ( item.getmType() == Items.Type.ALBUMS ) || ( item.getmType() == Items.Type.ARTISTS) || ( item.getmType() == Items.Type.TRACKS) )
         {
-            holder.mId3.setText(String.valueOf((item.get(0)).getmId()));
-            holder.mName3.setText((item.get(0)).getmName());
-            Glide.with(holder.mImage3.getContext()).load((item.get(0)).getmImage()).into(holder.mImage3);
-//            Picasso.with(context).load((item.get(0)).getmImage()).into(holder.mImage3);
-            holder.mType.setText((item.get(0)).getmType().toString());
-            holder.mId2.setText(String.valueOf((item.get(1)).getmId()));
-            holder.mName2.setText((item.get(1)).getmName());
-            Picasso.with(context).load((item.get(1)).getmImage()).into(holder.mImage2);
-            holder.mId1.setText(String.valueOf((item.get(2)).getmId()));
-            holder.mName1.setText((item.get(2)).getmName());
-            Picasso.with(context).load((item.get(2)).getmImage()).into(holder.mImage1);
+            return TYPE_HEADER;
         }
-        else
+        return TYPE_ITEM;
+    }
+
+    @Override
+    public void onBindViewHolder( final RecyclerView.ViewHolder holder, int position )
+    {
+        Items item = dataList.get(position);
+        Log.d("DEBUG","Datalist size = " + dataList.size() );
+        if( holder instanceof HeaderViewHolder )
         {
-            holder.mId.setText(String.valueOf((item.get(0)).getmId()));
-            holder.mName.setText((item.get(0)).getmName());
-            Picasso.with(context).load((item.get(0)).getmImage()).into(holder.mImage);
+            HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
+            headerViewHolder.mType.setText(item.getmType().toString());
+            Log.d("DEBUG", "Printing Type " + item.getmType().toString());
+        }
+        else if( holder instanceof ItemViewHolder )
+        {
+            final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
+            itemViewHolder.mId.setText(String.valueOf(item.getmId()));
+            itemViewHolder.mName.setText(item.getmName());
+            Picasso.with(context).load(item.getmImage()).into(itemViewHolder.mImage);
+            Log.d("DEBUG", "Priting items of " + item.getmId() + item.getmName());
         }
     }
 
@@ -92,37 +98,54 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
 
     public String getType( int position )
     {
-        return (dataList.get(position)).get(position).getmType().toString();
+        return dataList.get(position).getmType().toString();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder
+    private class HeaderViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView mId1, mId2, mId3, mId;
-        public TextView mName1, mName2, mName3, mName;
-        public ImageView mImage1, mImage2, mImage3, mImage;
         public TextView mType;
 
-        public MyViewHolder( @NonNull View itemView, final onItemClickListener listener )
+        public HeaderViewHolder( View view, final onItemClickListener listener )
+        {
+            super(view);
+            mType = view.findViewById(R.id.textView);
+
+            itemView.setOnClickListener( new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    if( listener != null )
+                    {
+                        int position = getAdapterPosition();
+                        if( position != RecyclerView.NO_POSITION)
+                        {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    public class ItemViewHolder extends RecyclerView.ViewHolder
+    {
+        public TextView mId;
+        public TextView mName;
+        public ImageView mImage;
+
+        public ItemViewHolder( View itemView, final onItemClickListener listener )
         {
             super(itemView);
-            mId1 = itemView.findViewById(R.id.textView2);
-            mName1 = itemView.findViewById(R.id.textView3);
-            mImage1 = itemView.findViewById(R.id.imageView);
-            mId2 = itemView.findViewById(R.id.textView5);
-            mName2 = itemView.findViewById(R.id.textView6);
-            mImage2 = itemView.findViewById(R.id.imageView2);
-            mId3 = itemView.findViewById(R.id.textView9);
-            mName3 = itemView.findViewById(R.id.textView10);
-            mImage3 = itemView.findViewById(R.id.imageView3);
-            mType = itemView.findViewById(R.id.textView);
-
             mId = itemView.findViewById(R.id.textview11);
             mName = itemView.findViewById(R.id.textView12);
             mImage = itemView.findViewById(R.id.imageView4);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener( new View.OnClickListener()
+            {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View v)
+                {
                     if( listener != null )
                     {
                         int position = getAdapterPosition();

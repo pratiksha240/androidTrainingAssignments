@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -16,7 +18,7 @@
             android:layout_margin="5dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/imageView4"
                 style="@style/imageView" />
 
             <LinearLayout
@@ -26,12 +28,12 @@
                 android:layout_margin="10dp">
 
                 <TextView
-                    android:id="@+id/textView9"
-                    style="@style/itemTextview"/>
+                    android:id="@+id/textview11"
+                    style="@style/itemTextview"  />
 
                 <TextView
-                    android:id="@+id/textView10"
-                    style="@style/itemTextview" />
+                    android:id="@+id/textView12"
+                    style="@style/itemTextview"  />
             </LinearLayout>
         </LinearLayout>
 

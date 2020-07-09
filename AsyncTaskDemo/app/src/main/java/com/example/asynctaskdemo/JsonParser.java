@@ -20,6 +20,7 @@ public class JsonParser
 
     public ArrayList<AlbumsData> parseAlbumData( String response ) throws JSONException
     {
+        Log.d("DEBUG", "Called Album parser..!!");
         ArrayList<AlbumsData> albumData = new ArrayList<>();
         JSONObject jObj = new JSONObject(response);
         JSONArray jsonArray = jObj.getJSONArray("data");
@@ -28,10 +29,12 @@ public class JsonParser
             AlbumsData albumsData = new AlbumsData();
             JSONObject object = jsonArray.getJSONObject(i);
             albumsData.setmId(object.getInt("id"));
+            Log.d("DEBUG", "AlbumName = " + object.getString("title"));
             albumsData.setmName(object.getString("title"));
             albumsData.setmImage(object.getString("cover_small"));
             Log.d("DEBUG", "Album Id = " + albumsData.getmId());
             Log.d("DEBUG", "Album name = " + albumsData.getmName());
+//            System.out.println("AlbumId = " + ( albumData.get(i)).getmId());
             albumData.add(albumsData);
         }
         Log.d("DEBUG","Response = " + response);
@@ -49,7 +52,7 @@ public class JsonParser
             ArtistsData artistData = new ArtistsData();
             JSONObject object = jsonArray.getJSONObject(i);
             artistData.setmId(object.getInt("id"));
-            artistData.setmName(object.getString("title"));
+            artistData.setmName(object.getString("name"));
             artistData.setmImage(object.getString("picture_small"));
             Log.d("DEBUG", "Artist Id = " + artistData.getmId());
             Log.d("DEBUG", "Artist name = " + artistData.getmName());

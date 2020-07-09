@@ -5,6 +5,7 @@ public class Items
     private int mId;
     private String mName;
     private String mImage;
+    private Type mType;
 
     public int getmId()
     {
@@ -28,7 +29,7 @@ public class Items
 
     public String getmImage()
     {
-        return mImage;
+        return "https://picsum.photos/300/300/?image=1008";
     }
 
     public void setmImage(String mImage)
@@ -36,9 +37,19 @@ public class Items
         this.mImage = mImage;
     }
 
+    public Type getmType()
+    {
+        return mType;
+    }
+
+    public void setmType(Type mType)
+    {
+        this.mType = mType;
+    }
+
     public enum Type
     {
-        ALBUMs,
+        ALBUMS,
         ARTISTS,
         TRACKS
     }

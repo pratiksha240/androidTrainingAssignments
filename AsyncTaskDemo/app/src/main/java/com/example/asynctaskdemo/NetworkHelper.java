@@ -29,7 +29,8 @@ public class NetworkHelper
         {
             e.printStackTrace();
         }
-        Log.e("data", response);
+        System.out.println( "Response = " + response );
+        Log.d("DEBUG", "Before return Response = " + response );
         return response;
     }
 
@@ -52,7 +53,7 @@ public class NetworkHelper
         {
             e.printStackTrace();
         }
-        Log.e("data", response);
+        Log.d("DEBUG", "Before return Response = " + response );
         return response;
     }
 
@@ -75,7 +76,7 @@ public class NetworkHelper
         {
             e.printStackTrace();
         }
-        Log.e("data", response);
+        Log.d("DEBUG", "Before return Response = " + response );
         return response;
     }
 //    static String getResponseFromUrl( String urlQuery )

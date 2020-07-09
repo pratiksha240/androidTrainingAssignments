@@ -82,10 +82,6 @@ public class MainActivity extends AppCompatActivity
             fm.popBackStack();
             return true;
         }
-        else
-        {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        }
         return false;
     }
 

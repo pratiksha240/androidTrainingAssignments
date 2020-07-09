@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity
             frontPage();
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Back");
     }
 
     @Override
@@ -83,6 +82,10 @@ public class MainActivity extends AppCompatActivity
             fm.popBackStack();
             return true;
         }
+        else
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
         return false;
     }
 
@@ -90,7 +93,6 @@ public class MainActivity extends AppCompatActivity
     {
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.frag_layout, new MainFragment(), "Main Fragment");
-        ft.addToBackStack(null);
         ft.commit();
     }
 

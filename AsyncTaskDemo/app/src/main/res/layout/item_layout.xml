@@ -5,11 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="5dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        style="?attr/CardviewStyle">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,7 +21,7 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                style="@style/imageView" />
+                style="?attr/imageviewStyle" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,11 +31,11 @@
 
                 <TextView
                     android:id="@+id/textview11"
-                    style="@style/itemTextview"  />
+                    style="?attr/textviewStyle"  />
 
                 <TextView
                     android:id="@+id/textView12"
-                    style="@style/itemTextview"  />
+                    style="?attr/textviewStyle"  />
             </LinearLayout>
         </LinearLayout>
 

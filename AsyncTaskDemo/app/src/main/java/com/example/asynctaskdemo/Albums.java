@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,10 @@ public class Albums extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.MyTheme);
+        inflater = getActivity().getLayoutInflater().cloneInContext(contextThemeWrapper);
         View view = inflater.inflate(R.layout.fragment_albums, container, false);
+
         recyclerView = view.findViewById(R.id.albumview);
         recyclerView.setLayoutManager( new LinearLayoutManager( getContext() ) );
 

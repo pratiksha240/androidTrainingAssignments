@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#499BB0</color>
+    <color name="colorPrimaryDark">#0E3DE7</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="cardviewcolor">#28B0CB</color>
+    <color name="Albumcardviewcolor">#16A69A</color>
+    <color name="DefaultTextviewColor">#F7F8FB</color>
+    <color name="backgroundColor">#F7F8FB</color>
+    <color name="newcolorPrimary">#05A475</color>
+    <color name="newcolorPrimaryDark">#08633C</color>
+    <color name="newcolorAccent">#05C8A1</color>
 </resources>

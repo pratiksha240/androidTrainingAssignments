@@ -1,38 +1,21 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="cardViewStyle">@style/cardView</item>
+        <item name="imageviewStyle">@style/imageView</item>
+        <item name="textviewStyle">@style/itemTextview</item>
+        <item name="itemTitle">@style/itemTitle</item>
     </style>
 
-    <style name="itemTextview">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:ems">10</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="imageView">
-        <item name="android:layout_height">100dp</item>
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_margin">10dp</item>
-    </style>
-
-    <style name="itemTitle">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:textSize">16sp</item>
+    <style name="MyTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/newcolorPrimary</item>
+        <item name="colorPrimaryDark">@color/newcolorPrimaryDark</item>
+        <item name="colorAccent">@color/newcolorAccent</item>
+        <item name="textviewStyle">@style/AlbumitemTextview</item>
+        <item name="imageviewStyle">@style/AlbumImageview</item>
+        <item name="cardViewStyle">@style/AlbumcardView</item>
     </style>
 </resources>

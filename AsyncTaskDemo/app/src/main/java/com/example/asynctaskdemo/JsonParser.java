@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class JsonParser
 {
@@ -74,9 +75,12 @@ public class JsonParser
             JSONObject object = jsonArray.getJSONObject(i);
             trackData.setmId(object.getInt("id"));
             trackData.setmName(object.getString("title"));
+            JSONObject artist = new JSONObject(object.getString("artist"));
+            trackData.setmArtistName(artist.getString("name"));
 //            trackData.setmImage(object.getString("picture_small"));
             Log.d("DEBUG", "Track Id = " + trackData.getmId());
             Log.d("DEBUG", "Track name = " + trackData.getmName());
+            Log.d("DEBUG", "Artist name = " + trackData.getmArtistName());
             tracksData.add(trackData);
         }
 

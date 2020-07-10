@@ -15,20 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class MainFragment extends Fragment
 {
@@ -104,6 +93,7 @@ public class MainFragment extends Fragment
         ArrayList<Items> items = new ArrayList<>();
         Items albums = new Items();
         albums.setmType(Items.Type.ALBUMS);
+        albums.setmLayoutType(Items.LayoutType.HEADER);
         items.add(albums);
         for( int i = 0; i < 3; i++ )
         {
@@ -113,11 +103,13 @@ public class MainFragment extends Fragment
             item.setmId(album.getmId());
             item.setmName(album.getmName());
             item.setmImage(album.getmImage());
+            item.setmLayoutType(Items.LayoutType.ITEM);
             System.out.println("Album Item = " + item.getmId() + "\t" + item.getmName() + "\t" + item.getmType());
             items.add(item);
         }
         Items artists = new Items();
         artists.setmType(Items.Type.ARTISTS);
+        artists.setmLayoutType(Items.LayoutType.HEADER);
         items.add(artists);
         for( int i = 0; i < 3; i++ )
         {
@@ -127,11 +119,13 @@ public class MainFragment extends Fragment
             item.setmId(artist.getmId());
             item.setmName(artist.getmName());
             item.setmImage(artist.getmImage());
+            item.setmLayoutType(Items.LayoutType.ITEM);
             System.out.println("Artist Item = " + item.getmId() + "\t" + item.getmName() + "\t" + item.getmType());
             items.add(item);
         }
         Items tracks = new Items();
         tracks.setmType(Items.Type.TRACKS);
+        tracks.setmLayoutType(Items.LayoutType.HEADER);
         items.add(tracks);
         for( int i = 0; i < 3; i++ )
         {
@@ -141,6 +135,8 @@ public class MainFragment extends Fragment
             item.setmId(track.getmId());
             item.setmName(track.getmName());
             item.setmImage(track.getmImage());
+            item.setmSubtitle(track.getmArtistName());
+            item.setmLayoutType(Items.LayoutType.TRACK);
             System.out.println("Track Item = " + item.getmId() + "\t" + item.getmName() + "\t" + item.getmType());
             items.add(item);
         }

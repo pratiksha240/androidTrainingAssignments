@@ -6,6 +6,8 @@ public class Items
     private String mName;
     private String mImage;
     private Type mType;
+    private String mSubtitle;
+    private LayoutType mLayoutType;
 
     public int getmId()
     {
@@ -47,10 +49,35 @@ public class Items
         this.mType = mType;
     }
 
+    public LayoutType getmLayoutType()
+    {
+        return mLayoutType;
+    }
+
+    public void setmLayoutType(LayoutType mLayoutType)
+    {
+        this.mLayoutType = mLayoutType;
+    }
+
+    public String getmSubtitle() {
+        return mSubtitle;
+    }
+
+    public void setmSubtitle(String mSubtitle) {
+        this.mSubtitle = mSubtitle;
+    }
+
     public enum Type
     {
         ALBUMS,
         ARTISTS,
-        TRACKS
+        TRACKS,
+    }
+
+    public enum LayoutType
+    {
+        HEADER,
+        ITEM,
+        TRACK,
     }
 }

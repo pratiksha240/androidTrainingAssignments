@@ -41,6 +41,7 @@ public class Artists extends Fragment
             item.setmId(artist.getmId());
             item.setmName(artist.getmName());
             item.setmImage(artist.getmImage());
+            item.setmLayoutType(Items.LayoutType.ITEM);
             System.out.println("artist Item = " + item.getmId() + "\t" + item.getmName() );
             itemsList.add(item);
         }

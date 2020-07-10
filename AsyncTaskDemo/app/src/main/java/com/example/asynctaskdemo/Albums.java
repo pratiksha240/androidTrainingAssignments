@@ -41,6 +41,7 @@ public class Albums extends Fragment
             item.setmId(album.getmId());
             item.setmName(album.getmName());
             item.setmImage(album.getmImage());
+            item.setmLayoutType(Items.LayoutType.ITEM);
             System.out.println("album Item = " + item.getmId() + "\t" + item.getmName() );
             itemsList.add(item);
         }

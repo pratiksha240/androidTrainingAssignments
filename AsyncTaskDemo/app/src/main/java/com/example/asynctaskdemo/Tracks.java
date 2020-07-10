@@ -41,6 +41,8 @@ public class Tracks extends Fragment
             item.setmId(track.getmId());
             item.setmName(track.getmName());
             item.setmImage(track.getmImage());
+            item.setmSubtitle(track.getmArtistName());
+            item.setmLayoutType(Items.LayoutType.TRACK);
             System.out.println("track Item = " + item.getmId() + "\t" + item.getmName() );
             itemsList.add(item);
         }

@@ -5,6 +5,7 @@ public class TracksData
     private int mId;
     private String mName;
     private String mImage;
+    private String mArtistName;
 
     public int getmId()
     {
@@ -34,5 +35,15 @@ public class TracksData
     public void setmImage(String mImage)
     {
         this.mImage = mImage;
+    }
+
+    public String getmArtistName()
+    {
+        return mArtistName;
+    }
+
+    public void setmArtistName(String mArtistName)
+    {
+        this.mArtistName = mArtistName;
     }
 }

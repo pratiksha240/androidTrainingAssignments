@@ -20,6 +20,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     Context context;
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
+    private static final int TYPE_TRACK = 2;
     ArrayList<Items> dataList;
     private onItemClickListener mListener;
 
@@ -44,13 +45,18 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     {
         if (viewType == TYPE_ITEM)
         {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_layout, parent, false);
             return new ItemViewHolder( itemView, mListener );
         }
         else if (viewType == TYPE_HEADER)
         {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.header_layout, parent, false);
             return new HeaderViewHolder( itemView, mListener );
+        }
+        else if (viewType == TYPE_TRACK)
+        {
+            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.track_layout, parent, false);
+            return new TrackHolder( itemView, mListener );
         }
         else
         {
@@ -62,11 +68,21 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public int getItemViewType( int position )
     {
         Items item = dataList.get(position);
-        if ( ( item.getmType() == Items.Type.ALBUMS ) || ( item.getmType() == Items.Type.ARTISTS) || ( item.getmType() == Items.Type.TRACKS) )
+        if ( item.getmLayoutType() == Items.LayoutType.HEADER )
         {
+            Log.d("DEBUG", "Header..!!");
             return TYPE_HEADER;
         }
-        return TYPE_ITEM;
+        else if( item.getmLayoutType() == Items.LayoutType.ITEM )
+        {
+            Log.d("DEBUG", "Item..!!");
+            return TYPE_ITEM;
+        }
+        else
+        {
+            Log.d("DEBUG", "Track..!!");
+            return TYPE_TRACK;
+        }
     }
 
     @Override
@@ -76,17 +92,27 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         Log.d("DEBUG","Datalist size = " + dataList.size() );
         if( holder instanceof HeaderViewHolder )
         {
+            Log.d("DEBUG","HeaderViewHolder Object...!!");
             HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
             headerViewHolder.mType.setText(item.getmType().toString());
             Log.d("DEBUG", "Printing Type " + item.getmType().toString());
         }
         else if( holder instanceof ItemViewHolder )
         {
+            Log.d("DEBUG","ItemViewHolder Object...!!");
             final ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
-            itemViewHolder.mId.setText(String.valueOf(item.getmId()));
             itemViewHolder.mName.setText(item.getmName());
             Picasso.with(context).load(item.getmImage()).into(itemViewHolder.mImage);
-            Log.d("DEBUG", "Priting items of " + item.getmId() + item.getmName());
+            Log.d("DEBUG", "Priting items of " + item.getmName());
+        }
+        else if( holder instanceof TrackHolder )
+        {
+            Log.d("DEBUG","TrackHolder Object...!!");
+            final TrackHolder trackHolder = (TrackHolder) holder;
+            trackHolder.mTrackName.setText(item.getmName());
+            trackHolder.mArtistName.setText(item.getmSubtitle());
+            Picasso.with(context).load(item.getmImage()).into(trackHolder.mTrackImage);
+            Log.d("DEBUG", "Priting track of " + item.getmId() + item.getmName());
         }
     }
 
@@ -130,16 +156,45 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public class ItemViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView mId;
         public TextView mName;
         public ImageView mImage;
 
         public ItemViewHolder( View itemView, final onItemClickListener listener )
         {
             super(itemView);
-            mId = itemView.findViewById(R.id.textview11);
-            mName = itemView.findViewById(R.id.textView12);
-            mImage = itemView.findViewById(R.id.imageView4);
+            mName = itemView.findViewById(R.id.textView2);
+            mImage = itemView.findViewById(R.id.imageView);
+
+            itemView.setOnClickListener( new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    if( listener != null )
+                    {
+                        int position = getAdapterPosition();
+                        if( position != RecyclerView.NO_POSITION)
+                        {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    public class TrackHolder extends RecyclerView.ViewHolder
+    {
+        public TextView mTrackName;
+        public TextView mArtistName;
+        public ImageView mTrackImage;
+
+        public TrackHolder( View itemView, final onItemClickListener listener )
+        {
+            super(itemView);
+            mTrackName = itemView.findViewById(R.id.textview11);
+            mArtistName = itemView.findViewById(R.id.textView12);
+            mTrackImage = itemView.findViewById(R.id.imageView4);
 
             itemView.setOnClickListener( new View.OnClickListener()
             {

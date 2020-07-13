@@ -3,8 +3,8 @@
 
     <style name="AlbumcardView" parent="cardView">
         <item name="cardBackgroundColor">@color/Albumcardviewcolor</item>
-        <item name="android:layout_marginLeft">12dp</item>
-        <item name="android:layout_marginRight">12dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginBottom">3dp</item>
         <item name="cardCornerRadius">3dp</item>
     </style>
@@ -19,8 +19,8 @@
 
     <style name="AlbumImageview" parent="imageView">
         <item name="android:layout_margin">3dp</item>
-        <item name="android:layout_height">80dp</item>
-        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">100dp</item>
     </style>
 
 </resources>

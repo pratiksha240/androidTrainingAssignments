@@ -3,5 +3,6 @@
     <attr name="CardviewStyle" format="reference"/>
     <attr name="textviewStyle" format="reference" />
     <attr name="imageviewStyle" format="reference" />
+    <attr name="ArtistImage" format="reference" />
     <attr name="itemTitle" format="reference" />
 </resources>

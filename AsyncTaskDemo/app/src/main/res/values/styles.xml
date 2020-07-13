@@ -27,4 +27,10 @@
         <item name="imageviewStyle">@style/ArtistImageview</item>
         <item name="cardViewStyle">@style/ArtistcardView</item>
     </style>
+
+    <style name="TrackTheme" parent="AppTheme">
+        <item name="textviewStyle">@style/TrackitemTextview</item>
+        <item name="imageviewStyle">@style/TrackImageview</item>
+        <item name="cardViewStyle">@style/TrackcardView</item>
+    </style>
 </resources>

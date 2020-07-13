@@ -103,7 +103,7 @@ public class MainFragment extends Fragment
             item.setmId(album.getmId());
             item.setmName(album.getmName());
             item.setmImage(album.getmImage());
-            item.setmLayoutType(Items.LayoutType.ITEM);
+            item.setmLayoutType(Items.LayoutType.ALBUM);
             System.out.println("Album Item = " + item.getmId() + "\t" + item.getmName() + "\t" + item.getmType());
             items.add(item);
         }
@@ -119,7 +119,7 @@ public class MainFragment extends Fragment
             item.setmId(artist.getmId());
             item.setmName(artist.getmName());
             item.setmImage(artist.getmImage());
-            item.setmLayoutType(Items.LayoutType.ITEM);
+            item.setmLayoutType(Items.LayoutType.ARTIST);
             System.out.println("Artist Item = " + item.getmId() + "\t" + item.getmName() + "\t" + item.getmType());
             items.add(item);
         }

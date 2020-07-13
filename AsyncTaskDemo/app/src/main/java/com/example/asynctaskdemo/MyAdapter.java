@@ -72,7 +72,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         else if (viewType == TYPE_TRACK)
         {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.track_layout, parent, false);
+            ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(context, R.style.TrackTheme);
+            View itemView = LayoutInflater.from(contextThemeWrapper).inflate(R.layout.track_layout, parent, false);
             return new TrackHolder( itemView, mListener );
         }
         else

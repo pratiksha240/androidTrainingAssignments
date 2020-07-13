@@ -23,7 +23,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final int TYPE_ALBUM = 1;
     private static final int TYPE_ARTIST = 2;
     private static final int TYPE_TRACK = 3;
-    private static final int TYPE_ITEM = 4;
     ArrayList<Items> dataList;
     private onItemClickListener mListener;
 
@@ -58,11 +57,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 contextThemeWrapper = new ContextThemeWrapper(context, R.style.ArtistTheme);
             }
             View itemView = LayoutInflater.from(contextThemeWrapper).inflate(R.layout.items_layout, parent, false);
-            return new ItemViewHolder( itemView, mListener );
-        }
-        else if (viewType == TYPE_ITEM)
-        {
-            View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_layout, parent, false);
             return new ItemViewHolder( itemView, mListener );
         }
         else if (viewType == TYPE_HEADER)
@@ -100,11 +94,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         {
             Log.d("DEBUG", "Artist..!!");
             return TYPE_ARTIST;
-        }
-        else if( item.getmLayoutType() == Items.LayoutType.ITEM )
-        {
-            Log.d("DEBUG", "Item..!!");
-            return TYPE_ITEM;
         }
         else
         {

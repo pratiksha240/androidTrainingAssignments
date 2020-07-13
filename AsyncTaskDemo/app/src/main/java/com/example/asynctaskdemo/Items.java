@@ -78,6 +78,8 @@ public class Items
     {
         HEADER,
         ITEM,
+        ALBUM,
+        ARTIST,
         TRACK,
     }
 }

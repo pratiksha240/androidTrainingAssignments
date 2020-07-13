@@ -9,5 +9,7 @@
     <color name="backgroundColor">#F7F8FB</color>
     <color name="newcolorPrimary">#05A475</color>
     <color name="newcolorPrimaryDark">#08633C</color>
-    <color name="newcolorAccent">#05C8A1</color>
+    <color name="newcolorAccent">#21AE92</color>
+    <color name="artistCardviewColor">#15FFD0</color>
+    <color name="TrackCardviewColor">#059C7D</color>
 </resources>

@@ -10,12 +10,21 @@
         <item name="itemTitle">@style/itemTitle</item>
     </style>
 
-    <style name="MyTheme" parent="AppTheme">
+    <style name="AlbumTheme" parent="AppTheme">
         <item name="colorPrimary">@color/newcolorPrimary</item>
         <item name="colorPrimaryDark">@color/newcolorPrimaryDark</item>
         <item name="colorAccent">@color/newcolorAccent</item>
         <item name="textviewStyle">@style/AlbumitemTextview</item>
         <item name="imageviewStyle">@style/AlbumImageview</item>
         <item name="cardViewStyle">@style/AlbumcardView</item>
+    </style>
+
+    <style name="ArtistTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/newcolorPrimary</item>
+        <item name="colorPrimaryDark">@color/newcolorPrimaryDark</item>
+        <item name="colorAccent">@color/newcolorAccent</item>
+        <item name="textviewStyle">@style/AlbumitemTextview</item>
+        <item name="imageviewStyle">@style/ArtistImageview</item>
+        <item name="cardViewStyle">@style/ArtistcardView</item>
     </style>
 </resources>

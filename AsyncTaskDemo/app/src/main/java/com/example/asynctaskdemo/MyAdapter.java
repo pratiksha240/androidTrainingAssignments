@@ -2,6 +2,7 @@ package com.example.asynctaskdemo;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     Context context;
     private static final int TYPE_HEADER = 0;
-    private static final int TYPE_ITEM = 1;
-    private static final int TYPE_TRACK = 2;
+    private static final int TYPE_ALBUM = 1;
+    private static final int TYPE_ARTIST = 2;
+    private static final int TYPE_TRACK = 3;
+    private static final int TYPE_ITEM = 4;
     ArrayList<Items> dataList;
     private onItemClickListener mListener;
 
@@ -43,7 +46,21 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        if (viewType == TYPE_ITEM)
+        if ( ( viewType == TYPE_ALBUM ) || ( viewType == TYPE_ARTIST ) )
+        {
+            ContextThemeWrapper contextThemeWrapper;
+            if( viewType == TYPE_ALBUM )
+            {
+                contextThemeWrapper = new ContextThemeWrapper(context, R.style.AlbumTheme);
+            }
+            else
+            {
+                contextThemeWrapper = new ContextThemeWrapper(context, R.style.ArtistTheme);
+            }
+            View itemView = LayoutInflater.from(contextThemeWrapper).inflate(R.layout.items_layout, parent, false);
+            return new ItemViewHolder( itemView, mListener );
+        }
+        else if (viewType == TYPE_ITEM)
         {
             View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_layout, parent, false);
             return new ItemViewHolder( itemView, mListener );
@@ -72,6 +89,16 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         {
             Log.d("DEBUG", "Header..!!");
             return TYPE_HEADER;
+        }
+        else if( item.getmLayoutType() == Items.LayoutType.ALBUM )
+        {
+            Log.d("DEBUG", "Album..!!");
+            return TYPE_ALBUM;
+        }
+        else if( item.getmLayoutType() == Items.LayoutType.ARTIST )
+        {
+            Log.d("DEBUG", "Artist..!!");
+            return TYPE_ARTIST;
         }
         else if( item.getmLayoutType() == Items.LayoutType.ITEM )
         {

@@ -20,7 +20,7 @@
     <style name="AlbumImageview" parent="imageView">
         <item name="android:layout_margin">3dp</item>
         <item name="android:layout_height">80dp</item>
-        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_width">80dp</item>
     </style>
 
 </resources>

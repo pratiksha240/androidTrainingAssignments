@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity
         {
             frontPage();
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -82,6 +81,10 @@ public class MainActivity extends AppCompatActivity
             fm.popBackStack();
             return true;
         }
+        else
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
         return false;
     }
 
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.frag_layout, new MainFragment(), "Main Fragment");
         ft.commit();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     private void albumPage(Albums albums, FragmentManager fragmentManager, Intent intent)
@@ -101,6 +105,7 @@ public class MainActivity extends AppCompatActivity
         ft.addToBackStack(null);
         ft.commit();
         System.out.println("Album page..!!");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void artistPage( Artists artists, FragmentManager fragmentManager, Intent intent)
@@ -112,6 +117,7 @@ public class MainActivity extends AppCompatActivity
         ft.addToBackStack(null);
         ft.commit();
         System.out.println("Artist page..!!");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void trackPage(Tracks tracks, FragmentManager fragmentManager, Intent intent)
@@ -123,5 +129,6 @@ public class MainActivity extends AppCompatActivity
         ft.addToBackStack(null);
         ft.commit();
         System.out.println("Track page..!!");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -21,8 +21,8 @@ public class Albums extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.MyTheme);
-        inflater = getActivity().getLayoutInflater().cloneInContext(contextThemeWrapper);
+//        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.MyTheme);
+//        inflater = getActivity().getLayoutInflater().cloneInContext(contextThemeWrapper);
         View view = inflater.inflate(R.layout.fragment_albums, container, false);
 
         recyclerView = view.findViewById(R.id.albumview);
@@ -41,13 +41,14 @@ public class Albums extends Fragment
             item.setmId(album.getmId());
             item.setmName(album.getmName());
             item.setmImage(album.getmImage());
-            item.setmLayoutType(Items.LayoutType.ITEM);
+            item.setmLayoutType(Items.LayoutType.ALBUM);
             System.out.println("album Item = " + item.getmId() + "\t" + item.getmName() );
             itemsList.add(item);
         }
 
         myAdapter = new MyAdapter( getContext(), itemsList );
         recyclerView.setAdapter(myAdapter);
+
         return view;
     }
 }

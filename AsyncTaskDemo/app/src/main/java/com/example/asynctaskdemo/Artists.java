@@ -22,8 +22,8 @@ public class Artists extends Fragment
                              ViewGroup container,
                              Bundle savedInstanceState)
     {
-        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.MyTheme);
-        inflater = getActivity().getLayoutInflater().cloneInContext(contextThemeWrapper);
+//        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.MyTheme);
+//        inflater = getActivity().getLayoutInflater().cloneInContext(contextThemeWrapper);
         View view = inflater.inflate(R.layout.fragment_artists, container, false);
         recyclerView = view.findViewById(R.id.artistview);
         recyclerView.setLayoutManager( new LinearLayoutManager( getContext() ) );
@@ -41,7 +41,7 @@ public class Artists extends Fragment
             item.setmId(artist.getmId());
             item.setmName(artist.getmName());
             item.setmImage(artist.getmImage());
-            item.setmLayoutType(Items.LayoutType.ITEM);
+            item.setmLayoutType(Items.LayoutType.ARTIST);
             System.out.println("artist Item = " + item.getmId() + "\t" + item.getmName() );
             itemsList.add(item);
         }

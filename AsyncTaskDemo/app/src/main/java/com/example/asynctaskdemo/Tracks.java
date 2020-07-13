@@ -21,7 +21,7 @@ public class Tracks extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.MyTheme);
+        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.AlbumTheme);
         inflater = getActivity().getLayoutInflater().cloneInContext(contextThemeWrapper);
         View view = inflater.inflate(R.layout.fragment_tracks, container, false);
         recyclerView = view.findViewById(R.id.trackview);

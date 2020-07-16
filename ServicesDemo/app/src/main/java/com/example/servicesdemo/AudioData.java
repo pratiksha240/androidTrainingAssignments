@@ -5,6 +5,7 @@ import android.net.Uri;
 public class AudioData
 {
     private Uri mPath;
+    private Uri mTrackId;
     private String mTitle;
     private String mAlbum;
     private String mArtist;
@@ -58,5 +59,15 @@ public class AudioData
     public void setmId(long mId)
     {
         this.mId = mId;
+    }
+
+    public Uri getmTrackId()
+    {
+        return mTrackId;
+    }
+
+    public void setmTrackId(Uri mTrackId)
+    {
+        this.mTrackId = mTrackId;
     }
 }

@@ -36,7 +36,6 @@ public class SongList
             int mAlbumId = songCursor.getColumnIndex( MediaStore.Audio.Media.ALBUM_ID );
             int mId = songCursor.getColumnIndex( MediaStore.Audio.Media._ID );
 
-//            int mPath = songCursor.getColumnIndex(String.valueOf(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI));
             do
             {
                 String mCurrentTitle = songCursor.getString(mTitle);
@@ -46,19 +45,22 @@ public class SongList
                 Uri mAlbumArtUri = ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"),
                         Long.parseLong(mCurrentAlbumId));
 
+                Uri mTrackPath = ContentUris.withAppendedId( uri, mCurrentSongId );
+
                 Log.d("DEBUG", "Id = " + mCurrentSongId );
                 Log.d("DEBUG", "Title = " + mCurrentTitle );
                 Log.d("DEBUG", "Artist = " + mCurrentArtist );
                 Log.d("DEBUG", "Image uri index = " + mAlbumId );
                 Log.d("DEBUG", "Image uri = " + mAlbumArtUri );
+                Log.d("DEBUG", "Track uri = " + mTrackPath );
 
                 AudioData audioData = new AudioData();
                 audioData.setmTitle(mCurrentTitle);
                 audioData.setmArtist(mCurrentArtist);
                 audioData.setmPath(mAlbumArtUri);
                 audioData.setmId(mCurrentSongId);
+                audioData.setmTrackId(mTrackPath);
                 mAudioData.add(audioData);
-                //mTitles.add(mCurrentTitle + "\n" + mCurrentAlbum + "\n" + mCurrentArtist );
             }while( songCursor.moveToNext() );
         }
         return mAudioData;

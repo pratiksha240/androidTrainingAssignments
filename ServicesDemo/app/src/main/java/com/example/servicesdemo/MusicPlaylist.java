@@ -2,6 +2,7 @@ package com.example.servicesdemo;
 
 import android.Manifest;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -13,13 +14,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -65,14 +64,20 @@ public class MusicPlaylist extends Fragment
             }
             adapter = new MyAdapter( mAudioData, view );
             listView.setAdapter(adapter);
-
+            final Intent intent = new Intent(getContext(), MusicService.class);
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                 {
                     Toast.makeText( getContext(), "Item Seleceted..!!", Toast.LENGTH_LONG );
-                    
+                    AudioData audioData = mAudioData.get(position);
+
+                    Log.d("DEBUG", "Playing song Title = " + audioData.getmTitle());
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("Id",audioData.getmId());
+                    intent.putExtras(bundle);
+                    getActivity().startService(intent);
                 }
             });
         }

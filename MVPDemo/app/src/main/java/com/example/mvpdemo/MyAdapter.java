@@ -44,7 +44,9 @@ public class MyAdapter extends BaseAdapter
     public View getView(int position, View convertView, ViewGroup parent)
     {
         View view = convertView;
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+//        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.items_layout, null);
 
         TextView mAuthor = view.findViewById(R.id.textView);

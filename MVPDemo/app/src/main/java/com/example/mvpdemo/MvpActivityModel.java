@@ -1,24 +1,20 @@
 package com.example.mvpdemo;
 
-import android.net.Uri;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 
-public class JsonParser
+public class MvpActivityModel implements MvpPictureDemo.Model
 {
-    ArrayList<ImageData> mImageData = new ArrayList<>();
-    public ArrayList<ImageData> parseImageData( String response ) throws JSONException, URISyntaxException
+    @Override
+    public ArrayList<ImageData> parseImageData( String response ) throws JSONException
     {
+        ArrayList<ImageData> mImageData = new ArrayList<>();
         Log.d("DEBUG", "Called ImageData parser..!!");
-//        JSONObject jObj = new JSONObject(response);
         JSONArray jsonArray = new JSONArray(response);
         for ( int i = 0 ; i < jsonArray.length() ; i++ )
         {

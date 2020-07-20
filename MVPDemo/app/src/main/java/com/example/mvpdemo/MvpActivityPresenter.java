@@ -3,17 +3,7 @@ package com.example.mvpdemo;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-
 import org.json.JSONException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class MvpActivityPresenter implements MvpPictureDemo.Presenter
@@ -45,29 +35,7 @@ public class MvpActivityPresenter implements MvpPictureDemo.Presenter
         {
             try
             {
-                HttpURLConnection urlConnection = null;
-                URL url = new URL(strings[0]);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.connect();
-                BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-
-                String line;
-                while ((line = br.readLine()) != null)
-                {
-                    mResponse = mResponse + line;
-                }
-                Log.d("DEBUG", "Response = " + mResponse );
-
-                mImageData = model.parseImageData(mResponse);
-
-            }
-            catch (MalformedURLException e)
-            {
-                e.printStackTrace();
-            }
-            catch (IOException e)
-            {
-                e.printStackTrace();
+                mImageData = model.parseImageData(strings[0]);
             }
             catch (JSONException e)
             {

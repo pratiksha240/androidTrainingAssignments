@@ -16,10 +16,18 @@ public class MainActivity extends AppCompatActivity
 
         if( savedInstanceState == null)
         {
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.add(R.id.Frag_layout, new MainFragment(), "Main Fragment");
-            ft.commit();
+            firstPage();
         }
+//        getActionBar().setTitle("Lorem Picsum");
     }
+
+    private void firstPage()
+    {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.Frag_layout, new MainFragment(), "Main Fragment");
+        ft.commit();
+    }
+
+
 }

@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="18dp"
         android:text="TextView"
         android:textSize="15dp" />
 </LinearLayout>

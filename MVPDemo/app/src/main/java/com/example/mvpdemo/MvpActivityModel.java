@@ -11,8 +11,10 @@ import java.util.ArrayList;
 public class MvpActivityModel implements MvpPictureDemo.Model
 {
     @Override
-    public ArrayList<ImageData> parseImageData( String response ) throws JSONException
+    public ArrayList<ImageData> parseImageData( String url ) throws JSONException
     {
+        NetworkHelper networkHelper = new NetworkHelper();
+        String response = networkHelper.getResponseFromURL(url);
         ArrayList<ImageData> mImageData = new ArrayList<>();
         Log.d("DEBUG", "Called ImageData parser..!!");
         JSONArray jsonArray = new JSONArray(response);
